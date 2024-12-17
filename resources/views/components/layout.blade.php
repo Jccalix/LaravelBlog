@@ -12,6 +12,7 @@
 <x-navbar />
 <div class="max-w-6x1 mx-auto">
     {{ $slot }} 
+</div>
 </body>
 
 </html>
