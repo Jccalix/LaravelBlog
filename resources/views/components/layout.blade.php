@@ -8,9 +8,9 @@
     @vite('resources/css/app.css')
 </head>
 
-<body>
+<body class="bg-slate-100 dark:bg-slate-800">
 <x-navbar />
-<div class="max-w-6x1 mx-auto">
+<div class="max-w-6xl mx-auto">
     {{ $slot }} 
 </div>
 </body>
