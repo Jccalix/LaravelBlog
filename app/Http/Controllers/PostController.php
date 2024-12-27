@@ -14,10 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $name = 'John Doe';
-        $age = 30;
-        $posts =['post1', 'post2', 'post3', 'post4'];
-        return view('posts.index', ['username' => $name, 'age' => $age, 'posts' => $posts]);
+        $posts = Post::all();   
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -33,10 +31,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        Post::create([
-            'title' => $request->title,
-            'content' => $request->content,
+        $validated = $request->validate([
+            'title' => ['required','min:5','max:255'],
+            'content' => ['required','min:10'],
         ]);
+        Post::create($validated);
         return redirect()->route('posts.index');
     }
 
@@ -45,6 +44,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        // $post = Post::findOrFail($id);
         return view('posts.show', ['post' => $post]);   
     }
 
