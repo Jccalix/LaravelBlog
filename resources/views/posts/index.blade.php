@@ -1,5 +1,6 @@
 <x-layout>
     <x-header>Posts Index Page</x-header>
+    @auth
     <section>
         <div class="flex justify-end">
             <a href="{{ route('posts.create') }}"
@@ -7,6 +8,7 @@
                 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Create</a>
         </div>
     </section>
+    @endauth
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach ($posts as $post)
             <div
