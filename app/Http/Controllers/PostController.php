@@ -66,7 +66,6 @@ class PostController extends Controller
             'content' => ['required','min:10'],
         ]);
         $post->update($validated);
-        return redirect()->route('posts.index');
     }
 
     /**
@@ -74,6 +73,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index');
     }
 }
